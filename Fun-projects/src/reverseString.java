@@ -95,34 +95,8 @@ public class reverseString {
 				+ " i's " + o + " o's " + u + " u's in the string for a "
 						+ "total of " + total + " vowels." );
 		
-		//Pig Latin
-		System.out.println("");
-		System.out.println("This sentence using pig latin would be");
-		
-		String temp,
-			work;
-		int length,
-			t,
-			z = 0;
-		words = working.length - 1;
-		while(words >= z) {
-			work = "";
-			t = 1;
-			temp = working[z];
-			length = temp.length();
-			length --;
-			while(t <= length) {
-				work = work + temp.charAt(t);
-				t ++;
-			}
-			work = work + temp.charAt(0) + "ay";
-			System.out.print(work + " ");
-			z ++;
-		}
-		
-		System.out.println("");
-		
 		scan.close();
+		
 	}
 
 }
