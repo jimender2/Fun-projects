@@ -13,8 +13,10 @@ public class Pascal {
 		System.out.println("Enter the row number you want to calculate to");
 		userRowNumber = scan.nextInt();
 		
+		lastRow = "1 1";
 		while(i <= userRowNumber) {
-			
+			currentRow = "1 ";
+
 		}
 	}
 }
