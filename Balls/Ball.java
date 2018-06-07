@@ -17,4 +17,18 @@ public class Ball {
 		ballX = ballRadius + rand.nextInt(100);
 		ballY = ballRadius + rand.nextInt(100);
 	}
+	
+	public ball(int radius) {
+		Random rand = new Random();
+		ballRadius = radius;
+		ballX = ballRadius + rand.nextInt(100);
+		ballY = ballRadius + rand.nextInt(100);
+	}
+	
+	public ball(int radius, int x, int y) {
+		Random rand = new Random();
+		ballRadius = radius;
+		ballX = ballRadius + x;
+		ballY = ballRadius + y;
+	}
 }
