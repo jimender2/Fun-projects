@@ -5,10 +5,6 @@ import javax.swing.*;
 import java.util.Random;
 
 /**
- * 
- */
-
-/**
  * @author Jonathan Meredith
  * This program uses classes for the different balls
  */
@@ -18,16 +14,16 @@ public class BouncingBallClasses extends JPanel {
 	Random rand = new Random();
 	Ball ball = new Ball();
 	// Container box's width and height
-	private static final int BOX_WIDTH = 100;//1280;//1500;//640;
-	private static final int BOX_HEIGHT = 100;//975;//800;//480;
+	private static final int BOX_WIDTH = 500;//1280;//1500;//640;
+	private static final int BOX_HEIGHT = 500;//975;//800;//480;
 	
 	// Ball's properties
 //not needed anymore?
-	private float ballRadius = rand.nextInt(25); // Ball's radius
-	private float ballX = ballRadius + rand.nextInt(25); // Ball's center (x, y)
-	private float ballY = ballRadius + rand.nextInt(25); 
-	private float ballSpeedX = rand.nextInt(10);	// Ball's speed for x and y
-	private float ballSpeedY = rand.nextInt(10);
+//	private float ballRadius = rand.nextInt(25); // Ball's radius
+//	private float ballX = ballRadius + rand.nextInt(25); // Ball's center (x, y)
+//	private float ballY = ballRadius + rand.nextInt(25); 
+//	private float ballSpeedX = rand.nextInt(10);	// Ball's speed for x and y
+//	private float ballSpeedY = rand.nextInt(10);
 //not needed anymore?
 	
 	private static final int UPDATE_RATE = 30; // Number of refresh per second
@@ -41,24 +37,23 @@ public class BouncingBallClasses extends JPanel {
 		public void run() {
 			while (true) { // Execute one update step
 				// Calculate the ball's new position
-				ballX += ballSpeedX;
-				ballY += ballSpeedY;
-				// Check if the ball moves over the bounds
+				ball.setBallX((ball.getBallX() ));// + ball.getBallSpeedX()));
+				ball.setBallY((ball.getBallY() ));// + ball.getBallSpeedY()));
 				// If so, adjust the position and speed.
-				if (ballX - ballRadius < 0) {
-					ballSpeedX = -ballSpeedX; // Reflect along normal
-					ballX = ballRadius; // Re-position the ball at the edge
-				} else if (ballX + ballRadius > BOX_WIDTH) {
-					ballSpeedX = -ballSpeedX;
-					ballX = BOX_WIDTH - ballRadius;
+				if ((ball.getBallX() - ball.getRadius()) < 0) {
+					ball.setBallSpeedX(-ball.getBallSpeedX()); // Reflect along normal
+					ball.setBallX(ball.getRadius()); // Re-position the ball at the edge
+				} else if ((ball.getBallX() + ball.getRadius()) > BOX_WIDTH) {
+					ball.setBallSpeedX(ball.getBallSpeedX());
+					ball.setBallX(BOX_WIDTH - ball.getRadius());
 				}
 				// May cross both x and y bounds
-				if (ballY - ballRadius < 0) {
-					ballSpeedY = -ballSpeedY;
-					ballY = ballRadius;
-				} else if (ballY + ballRadius > BOX_HEIGHT) {
-					ballSpeedY = -ballSpeedY;
-					ballY = BOX_HEIGHT - ballRadius;
+				if ((ball.getBallY() - ball.getRadius()) < 0) {
+					ball.setBallSpeedY(-ball.getBallSpeedY());
+					ball.setBallY(ball.getRadius());
+				} else if ((ball.getBallSpeedY() + ball.getRadius()) > BOX_HEIGHT) {
+					ball.setBallSpeedY(-ball.getBallSpeedY());
+					ball.setBallY(BOX_HEIGHT - ball.getRadius());
 				}
 					
 				// Refresh the display
@@ -84,18 +79,20 @@ public class BouncingBallClasses extends JPanel {
 		
 			// Draw the ball
 			g.setColor(Color.RED);
-			g.fillOval((int) (ballX - ballRadius), (int) (ballY - ballRadius),
-				(int)(2 * ballRadius), (int)(2 * ballRadius));
+			g.fillOval((int) (ball.getBallX() - ball.getRadius()), 
+				(int) (ball.getBallY() - ball.getRadius()),
+				(int)(2 * ball.getRadius()), (int)(2 * ball.getRadius()));
 			
 			// Display the ball's information
-			g.setColor(Color.WHITE);
-			g.setFont(new Font("Courier New", Font.PLAIN, 12));
-			StringBuilder sb = new StringBuilder();
-			Formatter formatter = new Formatter(sb);
-			formatter.format("Ball @(%3.0f,%3.0f) Speed=(%2.0f,%2.0f)", ballX, ballY,
-				ballSpeedX, ballSpeedY);
-			g.drawString(sb.toString(), 20, 30);
-			formatter.close();
+//			g.setColor(Color.WHITE);
+//			g.setFont(new Font("Courier New", Font.PLAIN, 12));
+//			StringBuilder sb = new StringBuilder();
+//			Formatter formatter = new Formatter(sb);
+//			formatter.format("Ball @(%3.0f,%3.0f) Speed=(%2.0f,%2.0f)", 
+//				ball.getBallX(), ball.getBallY(),
+//				ball.getBallSpeedX(), ball.getBallSpeedY());
+//			g.drawString(sb.toString(), 20, 30);
+//			formatter.close();
 		}
 		
 		/** main program (entry point) */
