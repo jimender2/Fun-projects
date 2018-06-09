@@ -40,12 +40,16 @@ public class Ball {
 		ballY = ballRadius + y;
 	}
 	
-	public void setBallX(int x) {
-		ballX = x;
+	public void setRadius(int x) {
+		ballRadius = x;
 	}
 	
-	public void setBallY(int y) {
-		ballY = y;
+	public void setBallX(float x) {
+		ballX = ballRadius + x;
+	}
+	
+	public void setBallY(float y) {
+		ballY = ballRadius + y;
 	}
 	
 	public void setBallSpeedX(int x) {
@@ -54,5 +58,21 @@ public class Ball {
 	
 	public void setBallSpeedY(int y) {
 		ballSpeedY = y;
+	}
+	
+	public float getBallX() {
+		return ballX;
+	}
+	
+	public float getBallY() {
+		return ballY;
+	}
+	
+	public int getBallSpeedX() {
+		return ballSpeedX;
+	}
+	
+	public int getBallSpeedY() {
+		return ballSpeedY;
 	}
 }
