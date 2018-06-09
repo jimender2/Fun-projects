@@ -10,34 +10,40 @@ public class Ball {
 	private float ballY;
 	private int ballSpeedX;
 	private int ballSpeedY;
+	private Color color;
 	
 	
 	//   private float ballSpeedX = rand.nextInt(10);   // Ball's speed for x and y
 	//   private float ballSpeedY = rand.nextInt(10);
 	
-	public ball() {
+	public Ball() {
 		Random rand = new Random();
 		ballRadius = rand.nextInt(25);
 		ballX = ballRadius + rand.nextInt(100);
 		ballY = ballRadius + rand.nextInt(100);
 		ballSpeedX = rand.nextInt(10);
 		ballSpeedY = rand.nextInt(10);
+		color = Color.BLUE;
 	}
 	
-	public ball(int radius) {
+	public Ball(int radius) {
 		Random rand = new Random();
 		ballRadius = radius;
 		ballX = ballRadius + rand.nextInt(100);
 		ballY = ballRadius + rand.nextInt(100);
 		ballSpeedX = rand.nextInt(10);
 		ballSpeedY = rand.nextInt(10);
+		color = Color.BLUE;
 	}
 	
-	public ball(int radius, int x, int y) {
+	public Ball(int radius, int x, int y) {
 		Random rand = new Random();
 		ballRadius = radius;
 		ballX = ballRadius + x;
 		ballY = ballRadius + y;
+		ballSpeedX = rand.nextInt(10);
+		ballSpeedY = rand.nextInt(10);
+		color = Color.BLUE;
 	}
 	
 	public void setRadius(int x) {
@@ -60,6 +66,10 @@ public class Ball {
 		ballSpeedY = y;
 	}
 	
+	public int getRadius() {
+		return ballRadius;
+	}
+	
 	public float getBallX() {
 		return ballX;
 	}
@@ -75,4 +85,13 @@ public class Ball {
 	public int getBallSpeedY() {
 		return ballSpeedY;
 	}
+	
+	public void setBallColor(Color col) {
+		color = col;
+	}
+	
+	public Color getBallColor() {
+		return color;
+	}
+	
 }
