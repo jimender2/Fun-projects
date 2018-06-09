@@ -6,16 +6,12 @@ import java.util.Random;
 
 public class Ball {
 	private int ballRadius;
-	private float ballX;
-	private float ballY;
+	private int ballX;
+	private int ballY;
 	private int ballSpeedX;
 	private int ballSpeedY;
 	private Color color;
-	
-	
-	//   private float ballSpeedX = rand.nextInt(10);   // Ball's speed for x and y
-	//   private float ballSpeedY = rand.nextInt(10);
-	
+		
 	public Ball() {
 		Random rand = new Random();
 		ballRadius = rand.nextInt(25);
@@ -39,10 +35,10 @@ public class Ball {
 	public Ball(int radius, int x, int y) {
 		Random rand = new Random();
 		ballRadius = radius;
-		ballX = ballRadius + x;
-		ballY = ballRadius + y;
-		ballSpeedX = rand.nextInt(10);
-		ballSpeedY = rand.nextInt(10);
+		ballX = ballRadius + 250; // x;
+		ballY = ballRadius + 250; // y;
+		ballSpeedX = 5; // rand.nextInt(10);
+		ballSpeedY = 5;  //rand.nextInt(10);
 		color = Color.BLUE;
 	}
 	
@@ -50,11 +46,11 @@ public class Ball {
 		ballRadius = x;
 	}
 	
-	public void setBallX(float x) {
+	public void setBallX(int x) {
 		ballX = ballRadius + x;
 	}
 	
-	public void setBallY(float y) {
+	public void setBallY(int y) {
 		ballY = ballRadius + y;
 	}
 	
@@ -70,11 +66,11 @@ public class Ball {
 		return ballRadius;
 	}
 	
-	public float getBallX() {
+	public int getBallX() {
 		return ballX;
 	}
 	
-	public float getBallY() {
+	public int getBallY() {
 		return ballY;
 	}
 	

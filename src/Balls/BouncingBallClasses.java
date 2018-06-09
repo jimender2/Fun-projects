@@ -37,8 +37,8 @@ public class BouncingBallClasses extends JPanel {
 		public void run() {
 			while (true) { // Execute one update step
 				// Calculate the ball's new position
-				ball.setBallX((ball.getBallX() ));// + ball.getBallSpeedX()));
-				ball.setBallY((ball.getBallY() ));// + ball.getBallSpeedY()));
+				ball.setBallX((ball.getBallX() + ball.getBallSpeedX()));
+				ball.setBallY((ball.getBallY() + ball.getBallSpeedY()));
 				// If so, adjust the position and speed.
 				if ((ball.getBallX() - ball.getRadius()) < 0) {
 					ball.setBallSpeedX(-ball.getBallSpeedX()); // Reflect along normal
