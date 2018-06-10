@@ -15,7 +15,7 @@ public class BouncingBallClasses extends JPanel {
 	Ball ball = new Ball();
 	// Container box's width and height
 	private static final int BOX_WIDTH = 500;//1280;//1500;//640;
-	private static final int BOX_HEIGHT = 5000;//975;//800;//480;
+	private static final int BOX_HEIGHT = 500;//975;//800;//480;
 	
 	// Ball's properties
 //not needed anymore?
@@ -42,23 +42,19 @@ public class BouncingBallClasses extends JPanel {
 				
 				// If so, adjust the position and speed.
 				if ((ball.getBallX() - ball.getRadius()) < 0) {
-					int ballspeed;
-					ballspeed = 1; //ball.getBallSpeedX();
-					ball.setBallSpeedX(0 - ballspeed); // Reflect along normal
+					ball.setBallSpeedX(0 - ball.getBallSpeedX()); // Reflect along normal
 					ball.setBallX(ball.getRadius()); // Re-position the ball at the edge
 				} else if ((ball.getBallX() + ball.getRadius()) > BOX_WIDTH) {
 					//ball.setBallSpeedX(0 - ball.getBallSpeedX());
-					ball.setBallSpeedX(-1);
+					ball.setBallSpeedX(0 - ball.getBallSpeedX());
 					ball.setBallX(BOX_WIDTH - ball.getRadius());
 				}
 				// May cross both x and y bounds
-				if ((ball.getBallY() + ball.getRadius()) < 0) {
+				if ((ball.getBallY() - ball.getRadius()) < 0) {
 					ball.setBallSpeedY(0 - ball.getBallSpeedY());
 					ball.setBallY(ball.getRadius());
-				} else if ((ball.getBallSpeedY() + ball.getRadius()) > BOX_HEIGHT) {
+				} else if ((ball.getBallY() + ball.getRadius()) > BOX_HEIGHT) {
 					ball.setBallSpeedY(0 - ball.getBallSpeedY());
-
-					//System.exit(0);
 					ball.setBallY(BOX_HEIGHT - ball.getRadius());
 				}
 					

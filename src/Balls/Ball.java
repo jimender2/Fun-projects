@@ -47,11 +47,11 @@ public class Ball {
 	}
 	
 	public void setBallX(int x) {
-		ballX = ballRadius + x;
+		ballX = x;
 	}
 	
 	public void setBallY(int y) {
-		ballY = ballRadius + y;
+		ballY = y;
 	}
 	
 	public void setBallSpeedX(int x) {
