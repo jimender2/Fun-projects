@@ -17,15 +17,6 @@ public class BouncingBallClasses extends JPanel {
 	private static final int BOX_WIDTH = 500;//1280;//1500;//640;
 	private static final int BOX_HEIGHT = 500;//975;//800;//480;
 	
-	// Ball's properties
-//not needed anymore?
-//	private float ballRadius = rand.nextInt(25); // Ball's radius
-//	private float ballX = ballRadius + rand.nextInt(25); // Ball's center (x, y)
-//	private float ballY = ballRadius + rand.nextInt(25); 
-//	private float ballSpeedX = rand.nextInt(10);	// Ball's speed for x and y
-//	private float ballSpeedY = rand.nextInt(10);
-//not needed anymore?
-	
 	private static final int UPDATE_RATE = 30; // Number of refresh per second
 	
 	/** Constructor to create the UI components and init game objects. */
@@ -103,7 +94,7 @@ public class BouncingBallClasses extends JPanel {
 			javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			 public void run() {
 				// Set up main window (using Swing's Jframe)
-				JFrame frame = new JFrame("A non Bouncing Ball");
+				JFrame frame = new JFrame("Bouncing Ball");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setContentPane(new BouncingBallClasses());
 				frame.pack();
