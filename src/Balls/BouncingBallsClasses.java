@@ -14,7 +14,7 @@ public class BouncingBallsClasses extends JPanel {
 	Random rand = new Random();
 	int i = 0;
 	int j = 50;
-	Ball[] balls = new Ball[10];
+	Ball[] ball = new Ball[10];
 	
 	// Container box's width and height
 	private static final int BOX_WIDTH = 500;//1280;//1500;//640;
@@ -29,31 +29,34 @@ public class BouncingBallsClasses extends JPanel {
 		// Start the ball bouncing (in its own thread)
 		Thread gameThread = new Thread() {
 		public void run() {
+			
 			while (true) { // Execute one update step
-				
-				
-				// Calculate the ball's new position
-				ball[i].setBallX((ball[i].getBallX() + (ball[i].getBallSpeedX())));
-				ball[i].setBallY((ball[i].getBallY() + ball[i].getBallSpeedY()));
-				
-				// If so, adjust the position and speed.
-				if ((ball[i].getBallX() - ball[i].getRadius()) < 0) {
-					ball[i].setBallSpeedX(0 - ball[i].getBallSpeedX()); // Reflect along normal
-					ball[i].setBallX(ball[i].getRadius()); // Re-position the ball at the edge
-				} else if ((ball[i].getBallX() + ball[i].getRadius()) > BOX_WIDTH) {
-					//ball[i].setBallSpeedX(0 - ball[i].getBallSpeedX());
-					ball[i].setBallSpeedX(0 - ball[i].getBallSpeedX());
-					ball[i].setBallX(BOX_WIDTH - ball[i].getRadius());
+				i=0;
+				while(i<(j-1)) {
+                    // Calculate the ball's new position
+                    ball[i].setBallX((ball[i].getBallX() + (ball[i].getBallSpeedX())));
+                    ball[i].setBallY((ball[i].getBallY() + ball[i].getBallSpeedY()));
+                    
+                    // If so, adjust the position and speed.
+                    if ((ball[i].getBallX() - ball[i].getRadius()) < 0) {
+                        ball[i].setBallSpeedX(0 - ball[i].getBallSpeedX()); // Reflect along normal
+                        ball[i].setBallX(ball[i].getRadius()); // Re-position the ball at the edge
+                    } else if ((ball[i].getBallX() + ball[i].getRadius()) > BOX_WIDTH) {
+                        //ball[i].setBallSpeedX(0 - ball[i].getBallSpeedX());
+                        ball[i].setBallSpeedX(0 - ball[i].getBallSpeedX());
+                        ball[i].setBallX(BOX_WIDTH - ball[i].getRadius());
+                    }
+                    // May cross both x and y bounds
+                    if ((ball[i].getBallY() - ball[i].getRadius()) < 0) {
+                        ball[i].setBallSpeedY(0 - ball[i].getBallSpeedY());
+                        ball[i].setBallY(ball[i].getRadius());
+                    } else if ((ball[i].getBallY() + ball[i].getRadius()) > BOX_HEIGHT) {
+                        ball[i].setBallSpeedY(0 - ball[i].getBallSpeedY());
+                        ball[i].setBallY(BOX_HEIGHT - ball[i].getRadius());
+                    }
+					i++;
 				}
-				// May cross both x and y bounds
-				if ((ball[i].getBallY() - ball[i].getRadius()) < 0) {
-					ball[i].setBallSpeedY(0 - ball[i].getBallSpeedY());
-					ball[i].setBallY(ball[i].getRadius());
-				} else if ((ball[i].getBallY() + ball[i].getRadius()) > BOX_HEIGHT) {
-					ball[i].setBallSpeedY(0 - ball[i].getBallSpeedY());
-					ball[i].setBallY(BOX_HEIGHT - ball[i].getRadius());
-				}
-					
+				
 				// Refresh the display
 				repaint(); // Callback paintComponent()
 				// Delay for timing control and give other threads a chance
@@ -74,14 +77,16 @@ public class BouncingBallsClasses extends JPanel {
 			// Draw the box
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, BOX_WIDTH, BOX_HEIGHT);
-		
-			while(i<j) {
+			
+			i=0;
+//			while(i<(j-1)) {
 				// Draw the ball
 				g.setColor(Color.RED);
 				g.fillOval((int) (ball[i].getBallX() - ball[i].getRadius()), 
-						(int) (ball[i].getBallY() - ball[i].getRadius()),
-						(int)(2 * ball[i].getRadius()), (int)(2 * ball[i].getRadius()));
-			
+					(int) (ball[i].getBallY() - ball[i].getRadius()),
+					(int)(2 * ball[i].getRadius()), (int)(2 * ball[i].getRadius()));
+				i++;
+//			}
 			// Display the ball's information
 //			g.setColor(Color.WHITE);
 //			g.setFont(new Font("Courier New", Font.PLAIN, 12));
