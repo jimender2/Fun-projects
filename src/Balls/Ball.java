@@ -14,11 +14,11 @@ public class Ball {
 		
 	public Ball() {
 		Random rand = new Random();
-		ballRadius = rand.nextInt(25);
-		ballX = ballRadius + rand.nextInt(100);
-		ballY = ballRadius + rand.nextInt(100);
-		ballSpeedX = rand.nextInt(10);
-		ballSpeedY = rand.nextInt(10);
+		ballRadius = rand.nextInt(250);
+		ballX = ballRadius + rand.nextInt(1000);
+		ballY = ballRadius + rand.nextInt(1000);
+		ballSpeedX = rand.nextInt(100);
+		ballSpeedY = rand.nextInt(100);
 		color = Color.BLUE;
 	}
 	

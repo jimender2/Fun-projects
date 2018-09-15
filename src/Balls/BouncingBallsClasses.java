@@ -13,8 +13,8 @@ import java.util.Random;
 public class BouncingBallsClasses extends JPanel {
 	Random rand = new Random();
 	int i = 0;
-	int j = 50;
-	Ball[] ball = new Ball[10];
+	int j = 10;
+	Ball[] ball = new Ball[50];
 	
 	// Container box's width and height
 	private static final int BOX_WIDTH = 500;//1280;//1500;//640;
@@ -79,24 +79,24 @@ public class BouncingBallsClasses extends JPanel {
 			g.fillRect(0, 0, BOX_WIDTH, BOX_HEIGHT);
 			
 			i=0;
-//			while(i<(j-1)) {
+			while(i<(j-1)) {
 				// Draw the ball
 				g.setColor(Color.RED);
 				g.fillOval((int) (ball[i].getBallX() - ball[i].getRadius()), 
-					(int) (ball[i].getBallY() - ball[i].getRadius()),
-					(int)(2 * ball[i].getRadius()), (int)(2 * ball[i].getRadius()));
+						(int) (ball[i].getBallY() - ball[i].getRadius()),
+						(int)(2 * ball[i].getRadius()), (int)(2 * ball[i].getRadius()));
 				i++;
-//			}
+			}
 			// Display the ball's information
-//			g.setColor(Color.WHITE);
-//			g.setFont(new Font("Courier New", Font.PLAIN, 12));
-//			StringBuilder sb = new StringBuilder();
-//			Formatter formatter = new Formatter(sb);
-//			formatter.format("Ball @(%3.0f,%3.0f) Speed=(%2.0f,%2.0f)", 
-//				ball[i].getBallX(), ball[i].getBallY(),
-//				ball[i].getBallSpeedX(), ball[i].getBallSpeedY());
-//			g.drawString(sb.toString(), 20, 30);
-//			formatter.close();
+			g.setColor(Color.WHITE);
+			g.setFont(new Font("Courier New", Font.PLAIN, 12));
+			StringBuilder sb = new StringBuilder();
+			Formatter formatter = new Formatter(sb);
+			formatter.format("Ball @(%3.0f,%3.0f) Speed=(%2.0f,%2.0f)", 
+				ball[1].getBallX(), ball[1].getBallY(),
+				ball[1].getBallSpeedX(), ball[1].getBallSpeedY());
+			g.drawString(sb.toString(), 20, 30);
+			formatter.close();
 		}
 		
 		/** main program (entry point) */
